@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Security2" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-08-16T01:47:10" hostname="benq-Lenovo-G510" time="0.237">
+  <properties/>
+  <testcase name="Login" classname="Security2" time="0.237"/>
+  <system-out><![CDATA[    ?[32mGiven ?[0m?[32mI have csrf cookie and populate is done?[0m ?[90m# SecuritySteps.i_have_csrf_cookie_and_populate_is_done()?[0m
+    ?[32mAnd ?[0m?[32mThe base path is "?[0m?[32m?[1mlogin?[0m?[32m"?[0m                  ?[90m# HttpSteps.the_base_path_is(String)?[0m
+    ?[32mAnd ?[0m?[32mThe login request payload is set?[0m          ?[90m# SecuritySteps.the_login_request_payload_is_set()?[0m
+    ?[32mWhen ?[0m?[32mThe post request is passed?[0m               ?[90m# HttpSteps.the_post_request_is_passed()?[0m
+    ?[32mThen ?[0m?[32mResponse code is ?[0m?[32m?[1m200?[0m                     ?[90m# HttpSteps.response_code_is(Integer)?[0m
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
