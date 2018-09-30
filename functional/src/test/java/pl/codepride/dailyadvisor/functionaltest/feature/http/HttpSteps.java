@@ -21,6 +21,12 @@ public class HttpSteps {
         this.httpHelper.getRequest().basePath(targetUrl);
     }
 
+    @And("^The absolute path is \"([^\"]*)\"$")
+    public void the_absolute_path_is(String targetUrl) {
+        this.httpHelper.getRequest().baseUri(this.httpHelper.getBackendUrl());
+        this.httpHelper.getRequest().basePath(targetUrl);
+    }
+
     @And("^The payload is clean$")
     public void the_payload_is_clean() {
         this.httpHelper.getRequest().body("");

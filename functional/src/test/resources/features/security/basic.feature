@@ -1,6 +1,6 @@
 # language: en
 
-@Basic @LoggedAsUser
+@Basic @LoggedAsUser @Api
 Feature: Basic
   Basic API request
 
