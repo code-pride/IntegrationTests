@@ -20,6 +20,16 @@ public class HttpHelper {
     private String backendUrl = ConfigManager.loadStringProperty("backend.url.root");
 
     /**
+     * Security root url.
+     */
+    private String securityRoot = ConfigManager.loadStringProperty("backend.security.root");
+
+    /**
+     * Current service root. Default none.
+     */
+    private String serviceRoot = "";
+
+    /**
      * Crsf cookie name.
      */
     private String csrfTokenCookieName = ConfigManager.loadStringProperty("backend.csrf.cookie.name");
@@ -60,7 +70,7 @@ public class HttpHelper {
     public void populate() {
         given()
                 .when()
-                .get(backendUrl + "populate")
+                .get(backendUrl + "api/populate")
                 .then()
                 .statusCode(200);
     }
@@ -79,7 +89,7 @@ public class HttpHelper {
         this.jwtValue = this.request
                 .body(loginRequest)
                 .when()
-                .post(backendUrl + "login")
+                .post(backendUrl + securityRoot + "login")
                 .then()
                 .statusCode(200)
                 .and()
@@ -104,7 +114,7 @@ public class HttpHelper {
         if(this.csrfValue == null) {
             this.csrfValue = given()
                     .when()
-                    .get(backendUrl + "csrf")
+                    .get(backendUrl + securityRoot + "csrf")
                     .then()
                     .statusCode(200)
                     .and()
@@ -124,7 +134,7 @@ public class HttpHelper {
      * @return Created request.
      */
     public RequestSpecification createEmptyRequest() {
-        this.request = given().baseUri(backendUrl);
+        this.request = given().baseUri(backendUrl + serviceRoot);
         return this.request;
     }
 

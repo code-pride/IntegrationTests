@@ -18,26 +18,26 @@ public class MainHooks {
         this.httpHelper = httpHelper;
     }
 
-    @Before("@LoggedAsUser")
+    @Before(value = "@LoggedAsUser", order = 1)
     public void beforeLoggedAsUser() {
         httpHelper.populate();
         httpHelper.logIn("m@m.mm", "111111");
         httpHelper.createSecureRequest();
     }
 
-    @Before("@LoggedAsCoach")
+    @Before(value = "@LoggedAsCoach", order = 1)
     public void beforeLoggedAsCoach() {
         httpHelper.populate();
         httpHelper.logIn("m@m.mm", "111111");
         httpHelper.createSecureRequest();
     }
 
-    @Before("@Csrf")
+    @Before(value = "@Csrf", order = 1)
     public void beforeCsrf() {
         httpHelper.createCsrfRequest();
     }
 
-    @Before("@Unsecured")
+    @Before(value = "@Unsecured", order = 1)
     public void beforeUnsecured() {
         httpHelper.createEmptyRequest();
     }
