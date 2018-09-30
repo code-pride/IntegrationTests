@@ -1,2 +1,2 @@
 USE user_service;
-INSERT INTO user(id, email, password, active, role, enable) VALUES (uuid(), 'm@m.mm', '$2a$10$XmaqTJ.AQX98XieIsh8WfOusYM6g4WqzG2KkiyzvbTBnQK0D2UB3W', true, 'USER', true);
+INSERT INTO user(id, email, password, active, roles, enabled, name, last_name) VALUES (fd38c7cf-6515-4be8-a7da-46627d7a0594, 'm@m.mm', '$2a$10$XmaqTJ.AQX98XieIsh8WfOusYM6g4WqzG2KkiyzvbTBnQK0D2UB3W', true, ['USER'], true, 'Marek', 'Makowski');
