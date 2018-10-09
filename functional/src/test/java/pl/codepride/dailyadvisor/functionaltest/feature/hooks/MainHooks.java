@@ -42,4 +42,9 @@ public class MainHooks {
         httpHelper.createEmptyRequest();
     }
 
+    @Before(value = "@Cors", order = 0)
+    public void beforeCors() {
+        httpHelper.createCorsRequest();
+    }
+
 }

@@ -20,6 +20,11 @@ public class HttpHelper {
     private String backendUrl = ConfigManager.loadStringProperty("backend.url.root");
 
     /**
+     * Frontend url root.
+     */
+    private String frontendUrl = ConfigManager.loadStringProperty("frontend.url.root");
+
+    /**
      * Security root url.
      */
     private String securityRoot = ConfigManager.loadStringProperty("backend.security.root");
@@ -130,6 +135,16 @@ public class HttpHelper {
     }
 
     /**
+     * Create request with cors headers.
+     */
+    public void createCorsRequest() {
+        this.request = createEmptyRequest();
+        this.request.header("Origin", frontendUrl);
+        this.request.header("Access-Control-Request-Headers", "content-type");
+        this.request.header("Access-Control-Request-Method", "POST");
+    }
+
+    /**
      * Create empty request with no security.
      * @return Created request.
      */
@@ -149,12 +164,22 @@ public class HttpHelper {
     }
 
     /**
-     * Perform get reuqest.
+     * Perform get request.
      * @return Response.
      */
     public ValidatableResponse performGetReqest() {
         assertNotNull(this.request);
         this.response = this.request.get().then();
+        return this.response;
+    }
+
+    /**
+     * Perform options request.
+     * @return Response.
+     */
+    public ValidatableResponse performOptionsReqest() {
+        assertNotNull(this.request);
+        this.response = this.request.options().then();
         return this.response;
     }
 }

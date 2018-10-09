@@ -32,6 +32,11 @@ public class HttpSteps {
         this.httpHelper.getRequest().body("");
     }
 
+    @And("^Request header is \"([^\"]*)\" and has value \"([^\"]*)\"$")
+    public void request_header_is_and_has_value(String name, String value) {
+        this.httpHelper.getRequest().header(name,value);
+    }
+
     @When("^The post request is passed$")
     public void the_post_request_is_passed() {
         this.httpHelper.performPostReqest();
@@ -40,6 +45,11 @@ public class HttpSteps {
     @When("^The get request is passed$")
     public void the_get_request_is_passed() {
         this.httpHelper.performGetReqest();
+    }
+
+    @When("^The options request is passed$")
+    public void the_options_request_is_passed() {
+        this.httpHelper.performOptionsReqest();
     }
 
     @Then("Response code is (\\d+)$")
@@ -55,5 +65,10 @@ public class HttpSteps {
     @Then("^Response cooke is \"([^\"]*)\"$")
     public void cookie_exits(String cookieName) {
         this.httpHelper.getResponse().cookie(cookieName);
+    }
+
+    @Then("^Response header is \"([^\"]*)\" and has value \"([^\"]*)\"$")
+    public void response_header_is_and_has_value(String name, String value) {
+        this.httpHelper.getResponse().header(name,value);
     }
 }
